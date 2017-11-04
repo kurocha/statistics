@@ -18,15 +18,15 @@ namespace Statistics
 		{"it can compute average of multiple samples",
 			[](UnitTest::Examiner & examiner) {
 				Average<int> s;
-				s += 5;
-				s += 15;
+				s.add(5);
+				s.add(15);
 
 				examiner.check_equal(s.value(), 10);
 
 				Average<int> q;
-				q += 20;
-				q += 20;
-				q += s;
+				q.add(20);
+				q.add(20);
+				q.add(s);
 
 				examiner.check_equal(q.value(), 15);
 			}
