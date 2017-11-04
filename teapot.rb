@@ -32,6 +32,8 @@ define_target 'statistics-library' do |target|
 	target.depends 'Build/Files'
 	target.depends 'Build/Clang'
 	
+	target.depends 'Library/Numerics'
+	
 	target.depends :platform
 	target.depends 'Language/C++14', private: true
 	
@@ -49,36 +51,12 @@ define_target 'statistics-test' do |target|
 		run tests: 'Statistics', source_files: test_root.glob('Statistics/**/*.cpp'), arguments: arguments
 	end
 	
+	target.depends 'Language/C++14', private: true
+	
 	target.depends 'Library/UnitTest'
 	target.depends 'Library/Statistics'
 	
 	target.provides 'Test/Statistics'
-end
-
-define_target 'statistics-executable' do |target|
-	target.build do
-		source_root = target.package.path + 'source'
-		
-		build executable: 'Statistics', source_files: source_root.glob('Statistics.cpp')
-	end
-	
-	target.depends 'Build/Files'
-	target.depends 'Build/Clang'
-	
-	target.depends :platform
-	target.depends 'Language/C++14', private: true
-	
-	target.depends 'Library/Statistics'
-	target.provides 'Executable/Statistics'
-end
-
-define_target 'statistics-run' do |target|
-	target.build do |*arguments|
-		run executable: 'Statistics', arguments: arguments
-	end
-	
-	target.depends 'Executable/Statistics'
-	target.provides 'Run/Statistics'
 end
 
 # Configurations
@@ -102,4 +80,6 @@ end
 
 define_configuration "statistics" do |configuration|
 	configuration.public!
+	
+	configuration.require "numerics"
 end

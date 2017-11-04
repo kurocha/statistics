@@ -1,4 +1,0 @@
-
-namespace Statistics {
-	void sing();
-}
