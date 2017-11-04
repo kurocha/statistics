@@ -61,17 +61,5 @@ namespace Statistics
 		{
 			return _count;
 		}
-
-		/// Helper for adding a sample. Same as add_sample.
-		void operator+=(const NumericT & measurement)
-		{
-			add(measurement);
-		}
-
-		/// Helper for adding a samples. Same as add_samples.
-		void operator+=(const Average<NumericT> & other)
-		{
-			add(other);
-		}
 	};
 }

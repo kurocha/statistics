@@ -44,6 +44,12 @@ namespace Statistics
 			_measurements.push_back(measurement);
 		}
 
+		void add(const Sample & other)
+		{
+			for (const auto & measurement : other._measurements)
+				add(measurement);
+		}
+
 		using Average<NumericT>::count;
 
 		NumericT average() { return this->value(); }
