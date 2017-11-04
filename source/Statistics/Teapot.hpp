@@ -1,0 +1,4 @@
+
+namespace Statistics {
+	void sing();
+}
